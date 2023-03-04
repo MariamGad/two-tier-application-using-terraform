@@ -17,3 +17,5 @@ subnets={
          cidr = "192.168.105.64/28"
       }
 }
+internet_gw_name="mariam-IGW"
+route_table_name="public-route-table-mariam"
