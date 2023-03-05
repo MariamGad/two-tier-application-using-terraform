@@ -1,10 +1,12 @@
 # **provider**
 variable region {}
 
+variable vpc_id{
+    description="To get vpc id"
+}
 # **network modules**
-
 # public subnets map
-variable "public_subnets" {
+variable public_subnets {
     type= map
     description = "creating map of map for public subnets"
     default = {
@@ -17,7 +19,7 @@ variable "public_subnets" {
 }
 
 # private subnets map
-variable "private_subnets" {
+variable private_subnets {
     type= map
     description = "creating map of map for private subnets"
     default = {
@@ -33,23 +35,37 @@ variable "private_subnets" {
   
 }
 
-variable "vpc_id"{}
-variable "internet_gw_name"{}
-variable "route_table_name"{}
-variable db_subent_group_name{}
+variable internet_gw_name{
+    description="internet gateway name"
+}
+
+variable route_table_name{
+    description="route table name"
+}
+
+variable db_subent_group_name{
+    description="database subnet group"
+}
 
 # **application module**
 variable instance_type {
     type = string
+    description="instance class type"
 }
+
 variable ami {
     type = string
+    description="image for ec2 instance"
 }
+
 variable tag_name {
     type = string
+    description="name for ec2 instance"
 }
+
 variable sg_name{
     type = string
+    description="secuirty group name"
 }
 
 # ** database module**

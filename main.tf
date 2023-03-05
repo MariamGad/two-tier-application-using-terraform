@@ -1,5 +1,5 @@
 module "network"{
-    source="../modules/network"
+    source="github.com/MariamGad/terraform-network-module.git"
     vpc_id=var.vpc_id
     public_subnets=var.public_subnets
     private_subnets=var.private_subnets
@@ -9,7 +9,7 @@ module "network"{
 }
 
 module "application"{
-    source="../modules/application"
+    source="github.com/MariamGad/terraform-application-module.git"
     instance_type=var.instance_type
     ami=var.ami
     tag_name=var.tag_name
@@ -22,7 +22,7 @@ module "application"{
 }
 
 module "database"{
-    source="../modules/database"
+    source="github.com/MariamGad/terraform-database-module.git"
     vpc_id=var.vpc_id
     db_allocated_storage=var.db_allocated_storage
     db_name= var.db_name
