@@ -21,7 +21,7 @@ Create VPC using AWS Console, find [documentation here](https://docs.aws.amazon.
 ---
 
 ### Create Network Module
-**you can find [network module](https://github.com/MariamGad/terraform-network-module) here**
+**you can find [network module](https://github.com/MariamGad/terraform-network-module) here**\
 this module is responsible for:
 * Creating public subnet for EC2 instance.
 * Creating two private subnets for RDS instance.
@@ -29,7 +29,13 @@ this module is responsible for:
 * Creating route table.
 * Attaching the Internet Gateway to the public subnet.
 * Attaching the route table to the public subnet.
-* Create subnet group for DB instance.
+* Create subnet group for RDS instance.
 ---
 
+### Create Application Module 
+**you can find [application module](https://github.com/MariamGad/terraform-application-module) here**\
+this module is responsible for:
+* Creating EC2 instance using `t2.micro` instance type with `Amazon Linux` image
+* Attaching EC2 to a public subnet 
+* Attaching security group that allows HTTP and HTTPS traffic to EC2 
 
