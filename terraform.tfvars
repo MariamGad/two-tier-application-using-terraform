@@ -21,9 +21,20 @@ private_subnets={
 }
 internet_gw_name="mariam-IGW"
 route_table_name="public-route-table-mariam"
+db_subent_group_name="mairma_db_subent_group"
 
 #application module
 instance_type="t2.micro"
 ami="ami-06b6c7fea532f597e"
 tag_name="instance-mariam"
 sg_name="mariam-SG"
+
+#database module
+db_allocated_storage=10
+db_name="mariamDatabase"
+db_engine="mysql"
+db_engine_version="5.7"
+db_instance_class="db.t2.small"
+db_username="admin"
+db_password= "adminadmin"
+db_final_snapshot= true
