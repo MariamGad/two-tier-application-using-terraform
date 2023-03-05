@@ -51,7 +51,7 @@ Create EC2 and RDS Instance Inside a Custom VPC on AWS using Terraform
 
 ### 5.Create database Module
 **you can find [database module](https://github.com/MariamGad/terraform-database-module) here**, this module is responsible for:
-* Creating RDS instance using `db.t2.small` instance class and `mysql` engine
+* Creating RDS instance using `db.t2.micro` instance class and `mysql` engine
 * Attaching RDS to two private subnets
 * Attaching security group that only allow access for the application to RDS through `3306 port`
 
