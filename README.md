@@ -13,16 +13,23 @@ Create EC2 and RDS Instance Inside a Custom VPC on AWS using Terraform
 * EC2 instance should be accessible anywhere on the internet via HTTP and HTTPS
 * RDS should be on a private subnet and inaccessible via the internet
 * Only the EC2 instance should be able to communicate with RDS
+* Use terraform state file in S3 bucket
 
 ## Steps
-### Create Custom VPC
-Create VPC using AWS Console, find [documentation here](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html#create-vpc-vpc-only)
 
+### Configure AWS Provider 
+* Configure AWS CLI to work using your AWS account
+* Specify aws provider source `hashicorp/aws` and version in `provider.tf` file
+* configure used region `provider.tf` file
+* Store terraform state `terraform.tfstate` file on S3 bucket
+---
+
+### Create Custom VPC
+* Create VPC using AWS Console, find [documentation here](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html#create-vpc-vpc-only)
 ---
 
 ### Create Network Module
-**you can find [network module](https://github.com/MariamGad/terraform-network-module) here**\
-this module is responsible for:
+**you can find [network module](https://github.com/MariamGad/terraform-network-module) here**, this module is responsible for:
 * Creating public subnet for EC2 instance.
 * Creating two private subnets for RDS instance.
 * Creating Internet Gateway to give EC2 instance an access to the Internet.
@@ -33,17 +40,16 @@ this module is responsible for:
 ---
 
 ### Create Application Module 
-**you can find [application module](https://github.com/MariamGad/terraform-application-module) here**\
-this module is responsible for:
+**you can find [application module](https://github.com/MariamGad/terraform-application-module) here**, this module is responsible for:
 * Creating EC2 instance using `t2.micro` instance type with `Amazon Linux` image
 * Attaching EC2 to a public subnet 
 * Attaching security group that allows HTTP and HTTPS traffic to EC2 
 ---
 
 ### Create database Module
-**you can find [database module](https://github.com/MariamGad/terraform-database-module) here**\
-this module is responsible for:
+**you can find [database module](https://github.com/MariamGad/terraform-database-module) here**, this module is responsible for:
 * Creating RDS instance using `db.t2.small` instance class and `mysql` engine
 * Attaching RDS to two private subnets
 * Attaching security group that only allow access for the application to RDS through `3306 port`
 ---
+
