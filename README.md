@@ -17,18 +17,18 @@ Create EC2 and RDS Instance Inside a Custom VPC on AWS using Terraform
 
 ## Steps
 
-### Configure AWS Provider 
+### 1.Configure AWS Provider 
 * Configure AWS CLI to work using your AWS account
 * Specify aws provider source `hashicorp/aws` and version in `provider.tf` file
 * configure used region `provider.tf` file
 * Store terraform state `terraform.tfstate` file on S3 bucket
 ---
 
-### Create Custom VPC
+### 2.Create Custom VPC
 * Create VPC using AWS Console, find [documentation here](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html#create-vpc-vpc-only)
 ---
 
-### Create Network Module
+### 3.Create Network Module
 **you can find [network module](https://github.com/MariamGad/terraform-network-module) here**, this module is responsible for:
 * Creating public subnet for EC2 instance.
 * Creating two private subnets for RDS instance.
@@ -39,17 +39,27 @@ Create EC2 and RDS Instance Inside a Custom VPC on AWS using Terraform
 * Creating subnet group for RDS instance.
 ---
 
-### Create Application Module 
+### 4.Create Application Module 
 **you can find [application module](https://github.com/MariamGad/terraform-application-module) here**, this module is responsible for:
 * Creating EC2 instance using `t2.micro` instance type with `Amazon Linux` image
 * Attaching EC2 to a public subnet 
 * Attaching security group that allows HTTP and HTTPS traffic to EC2 
 ---
 
-### Create database Module
+### 5.Create database Module
 **you can find [database module](https://github.com/MariamGad/terraform-database-module) here**, this module is responsible for:
 * Creating RDS instance using `db.t2.small` instance class and `mysql` engine
 * Attaching RDS to two private subnets
 * Attaching security group that only allow access for the application to RDS through `3306 port`
 ---
 
+### 6.Adding dependencies
+* in `main.tf` file add module sections for all created modules.
+* Add `source` attribute to refer to path of correct module , which is in our case a `github repo URL`.
+* Add all dependencies and variables used in that module.
+---
+
+## Verification
+* install all required files of the cloud provider and used modules `terraform init`
+* Check and validate all configurations `terraform plan`
+* Create all resources `terraform apply`
