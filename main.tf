@@ -12,6 +12,8 @@ module "ec2"{
     ami=var.ami
     tag_name=var.tag_name
     subnet_id=module.network.subnet_id
+    sg_name=var.sg_name
+    vpc_id=var.vpc_id
     depends_on = [
     module.network
   ]  
