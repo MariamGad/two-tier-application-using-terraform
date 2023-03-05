@@ -19,3 +19,8 @@ subnets={
 }
 internet_gw_name="mariam-IGW"
 route_table_name="public-route-table-mariam"
+
+#application module
+instance_type="t2.micro"
+ami="ami-06b6c7fea532f597e"
+tag_name="instance-mariam"

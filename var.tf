@@ -1,6 +1,7 @@
 #provider
 variable region {}
 
+#network modules
 variable "subnets" {
     type= map
     description = ""
@@ -24,3 +25,14 @@ variable "subnets" {
 variable "vpc_id"{}
 variable "internet_gw_name"{}
 variable "route_table_name"{}
+
+#application module
+variable instance_type {
+    type = string
+}
+variable ami {
+    type = string
+}
+variable tag_name {
+    type = string
+}
