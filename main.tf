@@ -23,7 +23,8 @@ module "application"{
 
 module "database"{
     source="../modules/database"
-    db_allocated_storage=10
+    vpc_id=var.vpc_id
+    db_allocated_storage=var.db_allocated_storage
     db_name= var.db_name
     db_engine= var.db_engine
     db_engine_version= var.db_engine_version
@@ -31,8 +32,11 @@ module "database"{
     db_username= var.db_username
     db_password= var.db_password
     db_final_snapshot=var.db_final_snapshot
+    db_sg_name=var.db_sg_name
+    app_security_group_id=module.application.output-app-secuiry-group
     private_subnet_ids=module.network.private-subnet-ids
     depends_on = [
-      module.network
+      module.network,
+      module.application
     ]
   }

@@ -83,3 +83,7 @@ variable db_password{
 variable db_final_snapshot{
     description = "to skip final snapshot"
 }
+
+variable db_sg_name{
+    description ="Database security group name"
+}

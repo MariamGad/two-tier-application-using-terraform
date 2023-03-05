@@ -38,3 +38,4 @@ db_instance_class="db.t2.small"
 db_username="admin"
 db_password= "adminadmin"
 db_final_snapshot= true
+db_sg_name="mariam-db-sg"
