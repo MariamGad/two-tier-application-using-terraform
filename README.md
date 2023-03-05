@@ -29,7 +29,7 @@ this module is responsible for:
 * Creating route table.
 * Attaching the Internet Gateway to the public subnet.
 * Attaching the route table to the public subnet.
-* Create subnet group for RDS instance.
+* Creating subnet group for RDS instance.
 ---
 
 ### Create Application Module 
@@ -38,4 +38,12 @@ this module is responsible for:
 * Creating EC2 instance using `t2.micro` instance type with `Amazon Linux` image
 * Attaching EC2 to a public subnet 
 * Attaching security group that allows HTTP and HTTPS traffic to EC2 
+---
 
+### Create database Module
+**you can find [database module](https://github.com/MariamGad/terraform-database-module) here**\
+this module is responsible for:
+* Creating RDS instance using `db.t2.small` instance class and `mysql` engine
+* Attaching RDS to two private subnets
+* Attaching security group that only allow access for the application to RDS through `3306 port`
+---
